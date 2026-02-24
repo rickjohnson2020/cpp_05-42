@@ -1,17 +1,18 @@
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
 
+#include <exception>
 #include <iostream>
 #include <string>
 
 class Bureaucrat {
 private:
-	std::string _name;
+	const std::string _name;
 	int _grade;
 
 public:
 	Bureaucrat();
-	Bureaucrat(int grade);
+	Bureaucrat(const std::string& name, int grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat& other);
 	Bureaucrat& operator=(const Bureaucrat& other);
@@ -27,10 +28,12 @@ public:
 		virtual const char* what() const throw();
 	};
 
-	class GradeTooLowException {
+	class GradeTooLowException : public std::exception {
 	public:
 		virtual const char* what() const throw();
 	};
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
 
 #endif
