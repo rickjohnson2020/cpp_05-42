@@ -23,6 +23,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	AForm::checkExecutable(executor);
 	createFile();
+	std::cout << _target << "_shrubbery file created" << std::endl;
 }
 
 void ShrubberyCreationForm::createFile() const {
