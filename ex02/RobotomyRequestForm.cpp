@@ -18,3 +18,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	_target = other._target;
 	return *this;
 }
+
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+	AForm::checkExecutable(executor);
+
+	std::cout << "BZZZZZZZZZZZ..... drilling noises..." << std::endl;
+	if (std::rand() % 2) {
+		std::cout << _target << " has been robotomized successfully" << std::endl;
+	} else {
+		std::cout << "Robotomy failed" << std::endl;
+	}
+}

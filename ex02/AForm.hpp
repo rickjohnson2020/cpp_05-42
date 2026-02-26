@@ -1,7 +1,7 @@
 #ifndef AFORM_H
 #define AFORM_H
 
-#include <ostream>
+#include <iostream>
 #include <string>
 #include <exception>
 
