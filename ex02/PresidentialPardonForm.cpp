@@ -18,3 +18,10 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	_target = other._target;
 	return *this;
 }
+
+void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
+	AForm::checkExecutable(executor);
+
+	(void)executor;
+	std::cout << _target << " has been pardoned by Zaphod Beedlebrox" << std::endl;
+}
