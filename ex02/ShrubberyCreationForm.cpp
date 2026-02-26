@@ -20,22 +20,29 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-//TODO
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-	if (!this->getIsSigned())
-		throw FormNotSignedException();
-	if (executor.getGrade() > this->getGradeToExecute())
-		throw GradeTooLowException();
-	//TODO: better to put this in try-catch?
-	createFile(_target);
+	AForm::checkExecutable(executor);
+	createFile();
 }
 
-void createFile(std::string target) {
-	const std::string tree = "          &&& &&  & &&\n      && &\\/&\\|& ()|/ @, &&\n      &\\/(/&/&||/& /_/)_&/_&\n   &() &\\/&|()|/&\\/ '%\" & ()\n  &_\\_&&_\\ |& |&&/&__%_/_& &&\n&&   && & &| &| /& & % ()& /&&\n ()&_---()&\\&\\|&&-&&--%---()~\n     &&     \\|||\n             |||\n             |||\n             |||\n       , -=-~  .-^- _\n";
-	// std::string fileName = target + "_shrubbery";
-	std::ofstream outfile((target + "_shrubbery").c_str());
+void ShrubberyCreationForm::createFile() const {
+	const std::string tree =
+			"          &&& &&  & &&\n"
+			"      && &\\/&\\|& ()|/ @, &&\n"
+			"      &\\/(/&/&||/& /_/)_&/_&\n"
+			"   &() &\\/&|()|/&\\/ '%\" & ()\n"
+			"  &_\\_&&_\\ |& |&&/&__%_/_& &&\n"
+			"&&   && & &| &| /& & % ()& /&&\n"
+			" ()&_---()&\\&\\|&&-&&--%---()~\n"
+			"     &&     \\|||\n"
+			"             |||\n"
+			"             |||\n"
+			"             |||\n"
+			"       , -=-~  .-^- _\n";
 
-	outfile << tree << std::endl;
+	std::ofstream outfile((_target + "_shrubbery").c_str());
+	if (!outfile)
+		throw std::runtime_error("File open failed");
 
-	outfile.close();
+	outfile << tree;
 }

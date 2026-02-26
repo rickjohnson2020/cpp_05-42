@@ -16,7 +16,7 @@ private:
 
 public:
 	AForm();
-	~AForm();
+	virtual ~AForm();
 	AForm(const std::string& name, const int gradeToSign, const int gradeToExecute);
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other);
@@ -28,6 +28,7 @@ public:
 	void beSigned(const Bureaucrat& b);
 
 	virtual void execute(const Bureaucrat& executor) const = 0;
+	void checkExecutable(const Bureaucrat& executor) const;
 
 	class GradeTooHighException : public std::exception {
 	public:

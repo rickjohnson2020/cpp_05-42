@@ -8,6 +8,7 @@
 class ShrubberyCreationForm : public AForm {
 private:
 	std::string _target;
+	void createFile() const;
 
 public:
 	ShrubberyCreationForm();
@@ -18,7 +19,5 @@ public:
 
 	void execute(const Bureaucrat& executor) const;
 };
-
-void createFile(std::string target);
 
 #endif

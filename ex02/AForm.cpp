@@ -62,3 +62,10 @@ std::ostream& operator<<(std::ostream& os, const AForm& obj) {
 	   << "Grade required to execute: " << obj.getGradeToExecute();
 	return os;
 }
+
+void AForm::checkExecutable(const Bureaucrat& executor) const {
+	if (!this->getIsSigned())
+		throw FormNotSignedException();
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw GradeTooLowException();
+}
