@@ -12,10 +12,6 @@ Intern& Intern::operator=(const Intern& other) {
 	return *this;
 }
 
-// const char* Intern::FormNotFoundException::what() const throw() {
-// 	return "Form not found!";
-// }
-
 AForm* Intern::createShrubbery(const std::string& target) {
 	return new ShrubberyCreationForm(target);
 }
@@ -48,7 +44,5 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
 		}
 	}
 	std::cout << "Intern couldn't find form: " << formName << std::endl;
-	// throw Intern::FormNotFoundException();
 	return NULL;
-
 }

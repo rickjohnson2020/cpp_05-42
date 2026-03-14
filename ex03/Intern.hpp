@@ -16,11 +16,6 @@ public:
 
 	AForm* makeForm(const std::string& formName, const std::string& target);
 
-	// class FormNotFoundException : public std::exception {
-	// public:
-	// 	virtual const char* what() const throw();
-	// };
-
 private:
 	static AForm* createShrubbery(const std::string& target);
 	static AForm* createRobotomy(const std::string& target);
